@@ -1,1 +1,800 @@
-[]
+[
+    {
+        "id": "a9afdc70a2e5d4b1",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b9b45e67fa8074e6",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ecda5b5de7efaca4",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "393bfa64574b616f",
+        "type": "ui_group",
+        "name": "new_ui",
+        "tab": "b9b45e67fa8074e6",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5f23dc27570c261f",
+        "type": "mongodb4-client",
+        "name": "",
+        "protocol": "mongodb",
+        "hostname": "localhost",
+        "port": "27017",
+        "dbName": "ros_db",
+        "authSource": "",
+        "authMechanism": "DEFAULT",
+        "tls": false,
+        "tlsCAFile": "",
+        "tlsInsecure": false,
+        "uri": "",
+        "advanced": "",
+        "uriTabActive": "tab-uri-simple"
+    },
+    {
+        "id": "c278f4432d7f2bd3",
+        "type": "ui_group",
+        "name": "html",
+        "tab": "b9b45e67fa8074e6",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d6b4e620c0bf702f",
+        "type": "ros-subscriber",
+        "z": "a9afdc70a2e5d4b1",
+        "topicname": "/test_topic",
+        "typepackage": "std_msgs",
+        "typename": "String",
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "3a676ec84a3adb9b",
+                "ebb982cf29d2e547"
+            ]
+        ]
+    },
+    {
+        "id": "3a676ec84a3adb9b",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "960c19da65dda5cb",
+        "type": "ros-publisher",
+        "z": "a9afdc70a2e5d4b1",
+        "topicname": "/test_topic",
+        "typepackage": "std_msgs",
+        "typename": "String",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e77e88ac9a98f879",
+        "type": "inject",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"data\":\"testtt\"}",
+        "payloadType": "json",
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "7f0bcbf8e2ec6716"
+            ]
+        ]
+    },
+    {
+        "id": "7f0bcbf8e2ec6716",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "function 1",
+        "func": "msg.payload = \"testjkj\"\n\nmsg.payload = {\n    \"data\": msg.payload\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "960c19da65dda5cb"
+            ]
+        ]
+    },
+    {
+        "id": "40a45b70bc609f68",
+        "type": "ui_text",
+        "z": "a9afdc70a2e5d4b1",
+        "group": "393bfa64574b616f",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 790,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ebb982cf29d2e547",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "function 2",
+        "func": "msg.payload = msg.payload.data;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 80,
+        "wires": [
+            [
+                "40a45b70bc609f68"
+            ]
+        ]
+    },
+    {
+        "id": "ebbec7bb15cc88da",
+        "type": "mongodb4",
+        "z": "a9afdc70a2e5d4b1",
+        "clientNode": "5f23dc27570c261f",
+        "collection": "ros_db_col",
+        "operation": "insertOne",
+        "output": "toArray",
+        "name": "",
+        "x": 640,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0c8f97c655f23ef7",
+        "type": "inject",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "insert the payload",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"data\":\"testtt\"}]",
+        "payloadType": "json",
+        "x": 270,
+        "y": 680,
+        "wires": [
+            [
+                "ebbec7bb15cc88da"
+            ]
+        ]
+    },
+    {
+        "id": "d6db4f77234a708c",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "update by data",
+        "func": "msg.payload = [{ \"data\": \"test4\" }, { $set: { \"data2.subdata\": \"not ok\" }, $currentDate: { lastModified: true } }]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 780,
+        "wires": [
+            [
+                "ed31ea46ef8ec1df"
+            ]
+        ]
+    },
+    {
+        "id": "ed31ea46ef8ec1df",
+        "type": "mongodb4",
+        "z": "a9afdc70a2e5d4b1",
+        "clientNode": "5f23dc27570c261f",
+        "collection": "ros_db_col",
+        "operation": "updateOne",
+        "output": "toArray",
+        "name": "",
+        "x": 650,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1ccec689c9cc458",
+        "type": "inject",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 780,
+        "wires": [
+            [
+                "d6db4f77234a708c"
+            ]
+        ]
+    },
+    {
+        "id": "d857b11e7c87c574",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "delete by spec",
+        "func": "msg.payload = [{ \"data\": \"testjkj\" }]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 900,
+        "wires": [
+            [
+                "793feff4adfc2cf6"
+            ]
+        ]
+    },
+    {
+        "id": "ca4ecd6f08b1cc09",
+        "type": "inject",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 900,
+        "wires": [
+            [
+                "d857b11e7c87c574"
+            ]
+        ]
+    },
+    {
+        "id": "793feff4adfc2cf6",
+        "type": "mongodb4",
+        "z": "a9afdc70a2e5d4b1",
+        "clientNode": "5f23dc27570c261f",
+        "collection": "ros_db_col",
+        "operation": "deleteOne",
+        "output": "toArray",
+        "name": "",
+        "x": 650,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4f8e1e04fe9eae3d",
+        "type": "comment",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "info": "if the input of deleteMany is {} , it will delete all documents of collection",
+        "x": 440,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "20525c2f65663497",
+        "type": "mongodb4",
+        "z": "a9afdc70a2e5d4b1",
+        "clientNode": "5f23dc27570c261f",
+        "collection": "ros_db_col",
+        "operation": "find",
+        "output": "toArray",
+        "name": "",
+        "x": 630,
+        "y": 1020,
+        "wires": [
+            [
+                "3eaf5fe75af7bb66"
+            ]
+        ]
+    },
+    {
+        "id": "6034fda6a3095f4d",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "find all and list",
+        "func": "msg.payload = [{}]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1020,
+        "wires": [
+            [
+                "20525c2f65663497"
+            ]
+        ]
+    },
+    {
+        "id": "a3f22c9ee28c33a6",
+        "type": "inject",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 1020,
+        "wires": [
+            [
+                "6034fda6a3095f4d",
+                "ee9d865c5e4f3949"
+            ]
+        ]
+    },
+    {
+        "id": "26201b7f8d7eba21",
+        "type": "ui_text",
+        "z": "a9afdc70a2e5d4b1",
+        "group": "393bfa64574b616f",
+        "order": 1,
+        "width": "6",
+        "height": "8",
+        "name": "",
+        "label": "List by Data",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1090,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "3eaf5fe75af7bb66",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "function 3",
+        "func": "var size;\nvar ids = [];\nsize = Object.keys(msg.payload).length;\nfor (let index = 0; index < size; index++) {\n    ids[index] = msg.payload[index].data\n    \n}\nids = ids.join('\\r\\n')\nmsg.payload = ids;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 1020,
+        "wires": [
+            [
+                "26201b7f8d7eba21"
+            ]
+        ]
+    },
+    {
+        "id": "6962395587e35fe9",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "815bce8a8b9f0b7b",
+        "type": "ui_form",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "label": "",
+        "group": "393bfa64574b616f",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Data:",
+                "value": "data",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "data": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 250,
+        "y": 500,
+        "wires": [
+            [
+                "3947011db6b8cc5d"
+            ]
+        ]
+    },
+    {
+        "id": "3947011db6b8cc5d",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "function 4",
+        "func": "msg.payload = [msg.payload];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 500,
+        "wires": [
+            [
+                "6962395587e35fe9",
+                "e68b2af54b8b68c4"
+            ]
+        ]
+    },
+    {
+        "id": "e68b2af54b8b68c4",
+        "type": "mongodb4",
+        "z": "a9afdc70a2e5d4b1",
+        "clientNode": "5f23dc27570c261f",
+        "collection": "ros_db_col",
+        "operation": "insertOne",
+        "output": "toArray",
+        "name": "",
+        "x": 640,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9f84fc4feea064ee",
+        "type": "ui_button",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "group": "393bfa64574b616f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Güncelle",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 400,
+        "y": 1120,
+        "wires": [
+            [
+                "6034fda6a3095f4d"
+            ]
+        ]
+    },
+    {
+        "id": "65cd18d00b1b5332",
+        "type": "mongodb4",
+        "z": "a9afdc70a2e5d4b1",
+        "clientNode": "5f23dc27570c261f",
+        "collection": "ros_db_col",
+        "operation": "findOne",
+        "output": "toArray",
+        "name": "",
+        "x": 620,
+        "y": 1200,
+        "wires": [
+            [
+                "f94cb918182a30b8",
+                "b351e0139b27bc66"
+            ]
+        ]
+    },
+    {
+        "id": "ee9d865c5e4f3949",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "find all and list",
+        "func": "msg.payload = [{\"data\":\"robot4\"}]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1200,
+        "wires": [
+            [
+                "65cd18d00b1b5332"
+            ]
+        ]
+    },
+    {
+        "id": "f94cb918182a30b8",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "7bcd323778dbc65b",
+        "type": "ui_text",
+        "z": "a9afdc70a2e5d4b1",
+        "group": "393bfa64574b616f",
+        "order": 1,
+        "width": "6",
+        "height": "8",
+        "name": "",
+        "label": "Latest Position",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1100,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "b351e0139b27bc66",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "function 5",
+        "func": "msg.payload = \"x:\" + msg.payload.x + \"\\ny:\" + msg.payload.y + \"\\nz:\" + msg.payload.z\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 1200,
+        "wires": [
+            [
+                "7bcd323778dbc65b"
+            ]
+        ]
+    },
+    {
+        "id": "8b88589cab704091",
+        "type": "ui_template",
+        "z": "a9afdc70a2e5d4b1",
+        "group": "c278f4432d7f2bd3",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div {{msg.payload}}>\n\n<canvas id=\"drawCanvas\" width=\"600\" height=\"600\"></canvas>\n<script>\n    // Canvas elementini seçin\n    var canvas = document.getElementById('drawCanvas');\n    var context = canvas.getContext('2d');\n    \n    var backgroundImage = new Image();\n    backgroundImage.src = \"https://i.hizliresim.com/dhimtef.jpg\"\n \n    backgroundImage.onload = function(){\n        context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);\n    }\n\n    // Çizim başlangıç noktasını sıfırlayın\n    var isDrawing = false;\n    var lastX = 0;\n    var lastY = 0;\n    \n    // Fare tıklama ve sürükleme olaylarını dinleyin\n    canvas.addEventListener('mousedown', function(e) {\n        isDrawing = true;\n        [lastX, lastY] = [e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top];\n    });\n    \n    canvas.addEventListener('mousemove', function(e) {\n        if (!isDrawing) return;\n        drawLine(context, lastX, lastY, e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top);\n        [lastX, lastY] = [e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top];\n    });\n    \n    canvas.addEventListener('mouseup', function() {\n        isDrawing = false;\n    });\n    \n    canvas.addEventListener('mouseout', function() {\n        isDrawing = false;\n    });\n    \n    // Çizgi çizme fonksiyonu\n    function drawLine(context, x1, y1, x2, y2) {\n        context.beginPath();\n        context.strokeStyle = 'black';\n        context.lineWidth = 2;\n        context.moveTo(x1, y1);\n        context.lineTo(x2, y2);\n        context.stroke();\n        context.closePath();\n    }\n</script>\n\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 280,
+        "y": 1340,
+        "wires": [
+            [
+                "9c4f325595e6133f"
+            ]
+        ]
+    },
+    {
+        "id": "9c4f325595e6133f",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 1340,
+        "wires": []
+    }
+]
