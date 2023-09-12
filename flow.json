@@ -524,7 +524,7 @@
         "group": "393bfa64574b616f",
         "order": 1,
         "width": "6",
-        "height": "8",
+        "height": "5",
         "name": "",
         "label": "List by Data",
         "format": "{{msg.payload}}",
@@ -718,7 +718,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1060,
+        "x": 760,
         "y": 1100,
         "wires": []
     },
@@ -729,7 +729,7 @@
         "group": "393bfa64574b616f",
         "order": 1,
         "width": "6",
-        "height": "8",
+        "height": "5",
         "name": "",
         "label": "Latest Position",
         "format": "{{msg.payload}}",
@@ -767,36 +767,19 @@
         "order": 0,
         "width": 0,
         "height": 0,
-        "format": "<div {{msg.payload}}>\n\n<canvas id=\"drawCanvas\" width=\"600\" height=\"600\"></canvas>\n<script>\n    // Canvas elementini seçin\n    var canvas = document.getElementById('drawCanvas');\n    var context = canvas.getContext('2d');\n    \n    var backgroundImage = new Image();\n    backgroundImage.src = \"https://i.hizliresim.com/dhimtef.jpg\"\n \n    backgroundImage.onload = function(){\n        context.drawImage(backgroundImage, 0, 0);\n    }\n\n    var startX, startY, endX, endY;\n    \n    // Fare tıklama ve sürükleme olaylarını dinleyin\n    canvas.addEventListener('mousedown', function(e) {\n        context.clearRect(0, 0, canvas.width, canvas.height);\n        context.drawImage(backgroundImage, 0, 0);\n        startX = e.clientX - canvas.getBoundingClientRect().left;\n        startY = e.clientY - canvas.getBoundingClientRect().top;\n    });\n    \n    canvas.addEventListener('mouseup', function(e) {\n        var endX = e.clientX - canvas.getBoundingClientRect().left;\n        var endY = e.clientY - canvas.getBoundingClientRect().top;\n        \n        // Çizgiyi çiz\n        context.beginPath();\n        context.strokeStyle = 'red';\n        context.lineWidth = 2;\n        context.moveTo(startX, startY);\n        context.lineTo(endX, endY);\n\n        var angle = Math.atan2(endY - startY, endX - startX);\n        context.lineTo(endX - 10 * Math.cos(angle - Math.PI / 6), endY - 10 * Math.sin(angle - Math.PI / 6));\n        context.moveTo(endX, endY);\n        context.lineTo(endX - 10 * Math.cos(angle + Math.PI / 6), endY - 10 * Math.sin(angle + Math.PI / 6));\n        context.stroke();\n\n        context.beginPath();\n        context.lineWidth = 5;\n        context.arc(startX, startY, 5, 0, 2 * Math.PI, false);\n        context.strokeStyle = 'green';\n        context.fillStyle = 'green';\n        context.fill();\n        \n        context.stroke();\n\n\n        var angle_of_path = calculateAngle(startX, startY, endX, endY)\n        angle_of_path = angle_of_path.toFixed(2)\n\n        send_to_nodered(startX, startY, angle_of_path)\n        \n    });\n\n    function send_to_nodered(x, y, degree){\n        var message = {\n        x, y, degree\n        };\n        fetch('/test', {\n            method: 'POST',\n            body: JSON.stringify(message),\n            headers: {\n            'Content-Type': 'application/json'\n            }\n        })\n        .then(response => {\n        // Başarılı bir yanıt alındığında burada bir işlem yapabilirsiniz\n        })\n        .catch(error => {\n        console.error('Hata:', error);\n        });\n    }\n\n    function calculateAngle(x1, y1, x2, y2) {\n        // İki nokta arasındaki farkları hesaplayın\n        var deltaX = x2 - x1;\n        var deltaY = y2 - y1;\n        \n        // Açıyı radyan cinsinden hesaplayın\n        var radians = Math.atan2(deltaY, deltaX);\n        \n        // Radyanı dereceye çevirin\n        var degrees = radians * (180 / Math.PI);\n        \n        // Açıyı 0 ile 360 arasına getirin\n        if (degrees < 0) { degrees +=360; } \n        return degrees; \n    }\n\n</script>\n\n</div>",
+        "format": "<div {{msg.payload}}>\n\n<canvas id=\"drawCanvas\" width=\"600\" height=\"600\"></canvas>\n<script>\n    // Canvas elementini seçin\n    var canvas = document.getElementById('drawCanvas');\n    var context = canvas.getContext('2d');\n    \n    var backgroundImage = new Image();\n    backgroundImage.src = \"https://i.hizliresim.com/dhimtef.jpg\"\n \n    backgroundImage.onload = function(){\n        context.drawImage(backgroundImage, 0, 0);\n    }\n\n    var startX, startY, endX, endY;\n    \n    // Fare tıklama ve sürükleme olaylarını dinleyin\n    canvas.addEventListener('mousedown', function(e) {\n        context.clearRect(0, 0, canvas.width, canvas.height);\n        context.drawImage(backgroundImage, 0, 0);\n        startX = e.clientX - canvas.getBoundingClientRect().left;\n        startY = e.clientY - canvas.getBoundingClientRect().top;\n    });\n    \n    canvas.addEventListener('mouseup', function(e) {\n        var endX = e.clientX - canvas.getBoundingClientRect().left;\n        var endY = e.clientY - canvas.getBoundingClientRect().top;\n        \n        // Çizgiyi çiz\n        context.beginPath();\n        context.strokeStyle = 'red';\n        context.lineWidth = 2;\n        context.moveTo(startX, startY);\n        context.lineTo(endX, endY);\n\n        var angle = Math.atan2(endY - startY, endX - startX);\n        context.lineTo(endX - 10 * Math.cos(angle - Math.PI / 6), endY - 10 * Math.sin(angle - Math.PI / 6));\n        context.moveTo(endX, endY);\n        context.lineTo(endX - 10 * Math.cos(angle + Math.PI / 6), endY - 10 * Math.sin(angle + Math.PI / 6));\n        context.stroke();\n\n        context.beginPath();\n        context.lineWidth = 5;\n        context.arc(startX, startY, 5, 0, 2 * Math.PI, false);\n        context.strokeStyle = 'green';\n        context.fillStyle = 'green';\n        context.fill();\n        \n        context.stroke();\n\n\n        var angle_of_path = calculateAngle(startX, startY, endX, endY)\n        angle_of_path = angle_of_path.toFixed(2)\n\n        send_to_nodered(startY, startX, angle_of_path)\n        \n    });\n\n    function send_to_nodered(x, y, degree){\n        var message = {\n        x, y, degree\n        };\n        fetch('/test', {\n            method: 'POST',\n            body: JSON.stringify(message),\n            headers: {\n            'Content-Type': 'application/json'\n            }\n        })\n        .then(response => {\n        // Başarılı bir yanıt alındığında burada bir işlem yapabilirsiniz\n        })\n        .catch(error => {\n        console.error('Hata:', error);\n        });\n    }\n\n    function calculateAngle(x1, y1, x2, y2) {\n        // İki nokta arasındaki farkları hesaplayın\n        var deltaX = x2 - x1;\n        var deltaY = y2 - y1;\n        \n        // Açıyı radyan cinsinden hesaplayın\n        var radians = Math.atan2(deltaY, deltaX);\n        \n        // Radyanı dereceye çevirin\n        var degrees = radians * (180 / Math.PI);\n        \n        // Açıyı 0 ile 360 arasına getirin\n        if (degrees < 0) { degrees +=360; } \n        return degrees; \n    }\n\n</script>\n\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 300,
-        "y": 1340,
+        "x": 240,
+        "y": 1400,
         "wires": [
             [
-                "9c4f325595e6133f",
                 "5995f3f6069f7131"
             ]
         ]
-    },
-    {
-        "id": "9c4f325595e6133f",
-        "type": "debug",
-        "z": "a9afdc70a2e5d4b1",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
-        "y": 1420,
-        "wires": []
     },
     {
         "id": "79bf060d37c9a9fd",
@@ -828,27 +811,158 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 690,
-        "y": 1340,
+        "x": 950,
+        "y": 1440,
         "wires": []
     },
     {
         "id": "5995f3f6069f7131",
         "type": "function",
         "z": "a9afdc70a2e5d4b1",
-        "name": "function 6",
-        "func": "msg.payload = \"x:\" + msg.payload.x + \"\\ny:\" + msg.payload.y + \"\\nangle:\" + msg.payload.degree\nreturn msg;",
+        "name": "x-y normalization and rotation",
+        "func": "var x = -1*(((msg.payload.x/600)*26)-13);\nx = x.toFixed(2);\nx = parseFloat(x)\nmsg.payload.x = x;\nvar y = -1 * (((msg.payload.y / 600) * 26) - 13);\ny = y.toFixed(2);\ny = parseFloat(y)\nmsg.payload.y = y;\n\nvar tempx = msg.payload.x\nvar tempy = msg.payload.y\nmsg.payload.x = -1 * tempy\nmsg.payload.y = tempx\n\nvar position_temp = { x: msg.payload.x, y: msg.payload.y, degree: msg.payload.degree }\nvar obj = { position: position_temp}\n\n\nfunction degreesToRadians(degrees) {\n    return (360 - degrees) * (Math.PI / 180);\n}\n\nfunction eulerToQuaternion(rollDegrees, pitchDegrees, yawDegrees) {\n    const roll = degreesToRadians(rollDegrees);\n    const pitch = degreesToRadians(pitchDegrees);\n    const yaw = degreesToRadians(yawDegrees);\n\n    const cy = Math.cos(yaw * 0.5);\n    const sy = Math.sin(yaw * 0.5);\n    const cp = Math.cos(pitch * 0.5);\n    const sp = Math.sin(pitch * 0.5);\n    const cr = Math.cos(roll * 0.5);\n    const sr = Math.sin(roll * 0.5);\n\n    const qw = cr * cp * cy + sr * sp * sy;\n    const qx = sr * cp * cy - cr * sp * sy;\n    const qy = cr * sp * cy + sr * cp * sy;\n    const qz = cr * cp * sy - sr * sp * cy;\n\n    var orientation = { x: qx, y: qy, z: qz, w: qw }\n\n    return { orientation };\n}\n\nvar orient = eulerToQuaternion(0, 0, msg.payload.degree)\n\nmsg.payload = Object.assign(obj, orient)\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
+        "x": 450,
         "y": 1340,
+        "wires": [
+            [
+                "d6a5f6984fe081e0",
+                "a45d10ad9555a9f7",
+                "9710a54b6f3c27a4",
+                "c0fc8720c445b3a7"
+            ]
+        ]
+    },
+    {
+        "id": "d6a5f6984fe081e0",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "target to string",
+        "func": "msg.payload = \"x:\" + msg.payload.position.x + \"\\ny:\" + msg.payload.position.y + \"\\nangle:\" + msg.payload.position.degree\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1440,
         "wires": [
             [
                 "322e83fc954cf4e8"
             ]
         ]
+    },
+    {
+        "id": "9710a54b6f3c27a4",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "orient object to string",
+        "func": "msg.payload = \"x:\" + msg.payload.orientation.x + \"\\ny:\" + msg.payload.orientation.y + \"\\nz:\" + msg.payload.orientation.z + \"\\nw:\" + msg.payload.orientation.w\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 1340,
+        "wires": [
+            [
+                "b6ac93708ed9b90c"
+            ]
+        ]
+    },
+    {
+        "id": "b6ac93708ed9b90c",
+        "type": "ui_text",
+        "z": "a9afdc70a2e5d4b1",
+        "group": "c278f4432d7f2bd3",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Orientation",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1090,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "c0fc8720c445b3a7",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "update by data",
+        "func": "msg.payload = [{ \"data\": \"robot3\" }, \n    {\n        $set: { \"position.x\": msg.payload.position.x, \"position.y\": msg.payload.position.y, \"position.z\": 0.0, \"orientation.x\": msg.payload.orientation.x, \"orientation.y\": msg.payload.orientation.y, \"orientation.z\": msg.payload.orientation.z, \"orientation.w\": msg.payload.orientation.w}, \n    $currentDate: { lastModified: true } }]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1540,
+        "wires": [
+            [
+                "831b75538f1e145f"
+            ]
+        ]
+    },
+    {
+        "id": "831b75538f1e145f",
+        "type": "mongodb4",
+        "z": "a9afdc70a2e5d4b1",
+        "clientNode": "5f23dc27570c261f",
+        "collection": "ros_db_col",
+        "operation": "updateOne",
+        "output": "toArray",
+        "name": "",
+        "x": 1030,
+        "y": 1540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "11972522b3ee1b52",
+        "type": "join",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 110,
+        "y": 1620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a45d10ad9555a9f7",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug of norm",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 1260,
+        "wires": []
     }
 ]
