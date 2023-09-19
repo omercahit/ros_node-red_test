@@ -171,6 +171,17 @@
         "className": ""
     },
     {
+        "id": "ef6dba4cc88d5826",
+        "type": "ui_group",
+        "name": "Target List",
+        "tab": "b9b45e67fa8074e6",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "ebbec7bb15cc88da",
         "type": "mongodb4",
         "z": "a9afdc70a2e5d4b1",
@@ -418,14 +429,14 @@
         "z": "a9afdc70a2e5d4b1",
         "group": "393bfa64574b616f",
         "order": 1,
-        "width": "6",
-        "height": "5",
+        "width": "12",
+        "height": "1",
         "name": "",
-        "label": "List by Data",
+        "label": "List of Robots",
         "format": "{{msg.payload}}",
         "layout": "col-center",
         "className": "",
-        "x": 1070,
+        "x": 1080,
         "y": 640,
         "wires": []
     },
@@ -471,7 +482,7 @@
         "name": "",
         "label": "",
         "group": "393bfa64574b616f",
-        "order": 4,
+        "order": 5,
         "width": 0,
         "height": 0,
         "options": [
@@ -542,7 +553,7 @@
         "z": "a9afdc70a2e5d4b1",
         "name": "",
         "group": "393bfa64574b616f",
-        "order": 3,
+        "order": 4,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -624,8 +635,8 @@
         "type": "ui_text",
         "z": "a9afdc70a2e5d4b1",
         "group": "393bfa64574b616f",
-        "order": 1,
-        "width": "6",
+        "order": 2,
+        "width": "4",
         "height": "5",
         "name": "",
         "label": "Latest Position",
@@ -660,7 +671,7 @@
         "type": "ui_template",
         "z": "a9afdc70a2e5d4b1",
         "group": "c278f4432d7f2bd3",
-        "name": "",
+        "name": "Map",
         "order": 4,
         "width": 0,
         "height": 0,
@@ -670,7 +681,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 320,
+        "x": 270,
         "y": 1080,
         "wires": [
             [
@@ -709,7 +720,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 1050,
+        "x": 1010,
         "y": 1120,
         "wires": []
     },
@@ -724,14 +735,15 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
+        "x": 510,
         "y": 1080,
         "wires": [
             [
                 "d6a5f6984fe081e0",
                 "a45d10ad9555a9f7",
                 "9710a54b6f3c27a4",
-                "c0fc8720c445b3a7"
+                "c0fc8720c445b3a7",
+                "5ca5e50ce429793f"
             ]
         ]
     },
@@ -746,7 +758,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
+        "x": 840,
         "y": 1120,
         "wires": [
             [
@@ -765,7 +777,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
+        "x": 880,
         "y": 1020,
         "wires": [
             [
@@ -786,7 +798,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 1190,
+        "x": 1150,
         "y": 1020,
         "wires": []
     },
@@ -801,7 +813,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
+        "x": 850,
         "y": 1220,
         "wires": [
             [
@@ -818,7 +830,7 @@
         "operation": "updateOne",
         "output": "toArray",
         "name": "",
-        "x": 1130,
+        "x": 1090,
         "y": 1220,
         "wires": [
             []
@@ -837,7 +849,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 900,
+        "x": 860,
         "y": 920,
         "wires": []
     },
@@ -874,7 +886,7 @@
         "templateScope": "local",
         "className": "",
         "x": 300,
-        "y": 1440,
+        "y": 1560,
         "wires": [
             [
                 "ffaf2230cf4dc28b",
@@ -895,8 +907,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 990,
-        "y": 1540,
+        "x": 1030,
+        "y": 1660,
         "wires": []
     },
     {
@@ -911,7 +923,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 1440,
+        "y": 1560,
         "wires": [
             [
                 "9875bbf6ec114899",
@@ -931,7 +943,7 @@
         "finalize": "",
         "libs": [],
         "x": 820,
-        "y": 1540,
+        "y": 1660,
         "wires": [
             [
                 "32a7b654a4c6af05"
@@ -950,7 +962,7 @@
         "finalize": "",
         "libs": [],
         "x": 860,
-        "y": 1440,
+        "y": 1560,
         "wires": [
             [
                 "5338656eeb0f33e0"
@@ -971,7 +983,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 1130,
-        "y": 1440,
+        "y": 1560,
         "wires": []
     },
     {
@@ -988,7 +1000,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 500,
-        "y": 1360,
+        "y": 1480,
         "wires": []
     },
     {
@@ -1001,7 +1013,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 130,
-        "y": 1440,
+        "y": 1560,
         "wires": [
             [
                 "c0c8306e9bcceae2"
@@ -1013,7 +1025,7 @@
         "type": "ui_template",
         "z": "a9afdc70a2e5d4b1",
         "group": "c278f4432d7f2bd3",
-        "name": "",
+        "name": "Location Tracker",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -1023,7 +1035,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1260,
+        "x": 1290,
         "y": 720,
         "wires": [
             []
@@ -1034,13 +1046,13 @@
         "type": "ui_text",
         "z": "a9afdc70a2e5d4b1",
         "group": "393bfa64574b616f",
-        "order": 4,
-        "width": "0",
-        "height": "0",
+        "order": 3,
+        "width": "6",
+        "height": "5",
         "name": "",
-        "label": "orientation",
+        "label": "Orientation",
         "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "layout": "col-center",
         "className": "",
         "x": 1330,
         "y": 900,
@@ -1069,21 +1081,230 @@
         "id": "5ca5e50ce429793f",
         "type": "ui_template",
         "z": "a9afdc70a2e5d4b1",
-        "group": "c278f4432d7f2bd3",
-        "name": "button",
+        "group": "ef6dba4cc88d5826",
+        "name": "multiple target",
         "order": 6,
-        "width": "9",
+        "width": "6",
         "height": "6",
-        "format": "<button id=\"adder\" type=\"button\" class = \"button1\">Click here to add as a new target!</button>\n<button id=\"cleaner\" type=\"button\" class = \"button2\">Clear</button>\n<style>\n    .button1 {\n        background-color: #D3D3D3;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        margin: 0 auto;\n        height: 6vh;\n        width: 30vh;\n    }\n    .button2 {\n    background-color: #d43434;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin: 0 auto;\n    height: 6vh;\n    width: 20vh;\n    }\n</style>\n</br>\n</br>\n<body>\n    <p id=\"text\">Bu metin değiştirilecek.</p>\n</body>",
+        "format": "<div {{msg.payload}}>\n    <div class=\"button-container\">\n        <button id=\"adder\" type=\"button\" class = \"button1\">Click here to add as a new target!</button>\n        <button id=\"cleaner\" type=\"button\" class = \"button2\">Clear</button>\n    </div>\n    <style>\n        .button1 {\n            background-color: #D3D3D3;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: 0 auto;\n            height: 6vh;\n            width: 25vh;\n        }\n        .button2 {\n            background-color: #d43434;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: 0 auto;\n            height: 6vh;\n            width: 15vh;\n        }\n        .button3 {\n            background-color: #228b22;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: 0 auto;\n            height: 6vh;\n            width: 15vh;\n        }\n        .button-container {\n            display: flex;\n            margin-right: 5px;\n        }\n    </style>\n    </br>\n    </br>\n\n    <p id=\"text\"><b>List of selected targets:</b></br></p>\n    <script>\n        \n        (function(scope){\n        scope.$watch('msg',function(){\n\n            var msgtemp = \"{\\\"x\\\":\" + scope.msg.payload.position.x + \",\\\"y\\\":\" + scope.msg.payload.position.y + \",\\\"degree\\\":\" + scope.msg.payload.position.degree + \"}</br>\";\n\n            var oldmsg = document.getElementById('text').innerHTML\n\n            document.getElementById('adder').addEventListener('click', function() {\n                document.getElementById('text').innerHTML = oldmsg + msgtemp\n            });\n        })\n        })(scope)\n\n        document.getElementById('cleaner').addEventListener('click', function() {\n                document.getElementById('text').innerHTML = \"<b>List of selected targets:</b></br>\"\n            });\n    </script>\n    \n    </br>\n    </br>\n    <button id=\"send_button\" type=\"button\" class = \"button3\">Send Goals</button>\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 310,
-        "y": 1600,
+        "x": 860,
+        "y": 1300,
+        "wires": [
+            [
+                "673d91bb0ab05d0d"
+            ]
+        ]
+    },
+    {
+        "id": "673d91bb0ab05d0d",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "multi target html",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "c19257085c337604",
+        "type": "ui_switch",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "393bfa64574b616f",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 870,
+        "y": 480,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "4bd5eb4a70e271bf",
+        "type": "ui_template",
+        "z": "a9afdc70a2e5d4b1",
+        "group": "ef6dba4cc88d5826",
+        "name": "",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "format": "<div {{msg.payload}}>\n\n<script>\n    document.getElementById('send_button').addEventListener('click', function() {\n        send_to_nodered2(document.getElementById('text').innerHTML)\n    });\n\n    function send_to_nodered2(text){\n        var mes = {text}\n        fetch('/test3', {\n        method: 'POST',\n        body: JSON.stringify(mes),\n        headers: {\n        'Content-Type': 'application/json'\n        }\n        })\n        .then(response => {\n        // Başarılı bir yanıt alındığında burada bir işlem yapabilirsiniz\n        })\n        .catch(error => {\n        console.error('Hata:', error);\n        });\n    }\n\n</script>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 300,
+        "y": 1200,
+        "wires": [
+            [
+                "187ed175d2807708",
+                "043515cc271c1a2d"
+            ]
+        ]
+    },
+    {
+        "id": "187ed175d2807708",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "28a634d978f5c463",
+        "type": "http in",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "url": "/test3",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1200,
+        "wires": [
+            [
+                "4bd5eb4a70e271bf"
+            ]
+        ]
+    },
+    {
+        "id": "5c4e1d6d96a4e9f2",
+        "type": "split",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "splt": "<br>",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 270,
+        "y": 1320,
+        "wires": [
+            [
+                "d9052a7fd847b24c"
+            ]
+        ]
+    },
+    {
+        "id": "ae9db8efb4baee31",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "043515cc271c1a2d",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "function 8",
+        "func": "msg.payload = msg.payload.text\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 120,
+        "y": 1320,
+        "wires": [
+            [
+                "5c4e1d6d96a4e9f2"
+            ]
+        ]
+    },
+    {
+        "id": "d9052a7fd847b24c",
+        "type": "join",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 410,
+        "y": 1320,
+        "wires": [
+            [
+                "bab013e58069130e"
+            ]
+        ]
+    },
+    {
+        "id": "bab013e58069130e",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "function 9",
+        "func": "var arr = msg.payload.slice(1,msg.payload.length-1)\nfor (let i = 0; i < arr.length; i++) {\n    arr[i] = JSON.parse(arr[i])\n}\nmsg.payload = arr;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 1320,
+        "wires": [
+            [
+                "ae9db8efb4baee31"
+            ]
         ]
     }
 ]
