@@ -177,7 +177,7 @@
         "tab": "b9b45e67fa8074e6",
         "order": 3,
         "disp": true,
-        "width": "6",
+        "width": "9",
         "collapse": false,
         "className": ""
     },
@@ -226,7 +226,7 @@
         "type": "function",
         "z": "a9afdc70a2e5d4b1",
         "name": "update by data",
-        "func": "msg.payload = [{ \"data\": \"test4\" }, { $set: { \"data2.subdata\": \"not ok\" }, $currentDate: { lastModified: true } }]\nreturn msg;",
+        "func": "msg.payload = [{ \"data\": \"robot3\" }, { $set: { \"new_target\":17 }, $currentDate: { lastModified: true } }]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -379,7 +379,7 @@
         "type": "function",
         "z": "a9afdc70a2e5d4b1",
         "name": "find all and list",
-        "func": "msg.payload = [{}]\nreturn msg;",
+        "func": "msg.payload = [{\"target1.target_executed\":0}]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -599,14 +599,14 @@
         "id": "ee9d865c5e4f3949",
         "type": "function",
         "z": "a9afdc70a2e5d4b1",
-        "name": "find all and list",
+        "name": "find one",
         "func": "msg.payload = [{\"data\":\"robot3\"}]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
+        "x": 360,
         "y": 820,
         "wires": [
             [
@@ -742,7 +742,6 @@
                 "d6a5f6984fe081e0",
                 "a45d10ad9555a9f7",
                 "9710a54b6f3c27a4",
-                "c0fc8720c445b3a7",
                 "5ca5e50ce429793f"
             ]
         ]
@@ -807,18 +806,16 @@
         "type": "function",
         "z": "a9afdc70a2e5d4b1",
         "name": "target update in db",
-        "func": "msg.payload = [{ \"data\": \"robot3\" }, \n    {\n        $set: { \"position.x\": msg.payload.position.x, \"position.y\": msg.payload.position.y, \"position.z\": 0.0, \"orientation.x\": msg.payload.orientation.x, \"orientation.y\": msg.payload.orientation.y, \"orientation.z\": msg.payload.orientation.z, \"orientation.w\": msg.payload.orientation.w, \"target_executed\": 0}, \n    $currentDate: { lastModified: true } }]\nreturn msg;",
+        "func": "msg.payload = [{ \"data\": \"robot3\" }, \n    {\n        $set: { \"target1.position.x\": msg.payload.position.x, \"target1.position.y\": msg.payload.position.y, \"target1.position.z\": 0.0, \"target1.orientation.x\": msg.payload.orientation.x, \"target1.orientation.y\": msg.payload.orientation.y, \"target1.orientation.z\": msg.payload.orientation.z, \"target1.orientation.w\": msg.payload.orientation.w, \"target_executed\": 0}, \n    $currentDate: { lastModified: true } }]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 850,
-        "y": 1220,
+        "x": 910,
+        "y": 1060,
         "wires": [
-            [
-                "831b75538f1e145f"
-            ]
+            []
         ]
     },
     {
@@ -830,8 +827,8 @@
         "operation": "updateOne",
         "output": "toArray",
         "name": "",
-        "x": 1090,
-        "y": 1220,
+        "x": 1030,
+        "y": 1320,
         "wires": [
             []
         ]
@@ -1035,7 +1032,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1290,
+        "x": 1070,
         "y": 720,
         "wires": [
             []
@@ -1054,8 +1051,8 @@
         "format": "{{msg.payload}}",
         "layout": "col-center",
         "className": "",
-        "x": 1330,
-        "y": 900,
+        "x": 1070,
+        "y": 860,
         "wires": []
     },
     {
@@ -1069,8 +1066,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1100,
-        "y": 880,
+        "x": 860,
+        "y": 860,
         "wires": [
             [
                 "ade4b24cb1fceb6b"
@@ -1084,16 +1081,16 @@
         "group": "ef6dba4cc88d5826",
         "name": "multiple target",
         "order": 6,
-        "width": "6",
-        "height": "6",
-        "format": "<div {{msg.payload}}>\n    <div class=\"button-container\">\n        <button id=\"adder\" type=\"button\" class = \"button1\">Click here to add as a new target!</button>\n        <button id=\"cleaner\" type=\"button\" class = \"button2\">Clear</button>\n    </div>\n    <style>\n        .button1 {\n            background-color: #D3D3D3;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: 0 auto;\n            height: 6vh;\n            width: 25vh;\n        }\n        .button2 {\n            background-color: #d43434;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: 0 auto;\n            height: 6vh;\n            width: 15vh;\n        }\n        .button3 {\n            background-color: #228b22;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: 0 auto;\n            height: 6vh;\n            width: 15vh;\n        }\n        .button-container {\n            display: flex;\n            margin-right: 5px;\n        }\n    </style>\n    </br>\n    </br>\n\n    <p id=\"text\"><b>List of selected targets:</b></br></p>\n    <script>\n        \n        (function(scope){\n        scope.$watch('msg',function(){\n\n            var msgtemp = \"{\\\"x\\\":\" + scope.msg.payload.position.x + \",\\\"y\\\":\" + scope.msg.payload.position.y + \",\\\"degree\\\":\" + scope.msg.payload.position.degree + \"}</br>\";\n\n            var oldmsg = document.getElementById('text').innerHTML\n\n            document.getElementById('adder').addEventListener('click', function() {\n                document.getElementById('text').innerHTML = oldmsg + msgtemp\n            });\n        })\n        })(scope)\n\n        document.getElementById('cleaner').addEventListener('click', function() {\n                document.getElementById('text').innerHTML = \"<b>List of selected targets:</b></br>\"\n            });\n    </script>\n    \n    </br>\n    </br>\n    <button id=\"send_button\" type=\"button\" class = \"button3\">Send Goals</button>\n</div>",
+        "width": "9",
+        "height": "14",
+        "format": "<div id=\"main_div\" {{msg.payload}}>\n    <div class=\"button-container\">\n        <button id=\"adder\" type=\"button\" class = \"button1\">Click here to add as a new target!</button>\n        <button id=\"cleaner\" type=\"button\" class = \"button2\">Clear</button>\n    </div>\n    <style>\n        .button1 {\n            background-color: #D3D3D3;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: auto;\n            height: 6vh;\n            width: 35vh;\n        }\n        .button2 {\n            background-color: #d43434;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: auto;\n            height: 6vh;\n            width: 20vh;\n        }\n        .button3 {\n            background-color: #228b22;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: auto;\n            height: 6vh;\n            width: 15vh;\n        }\n        .button-container {\n            display: flex;\n            margin-right: 5px;\n        }\n        .deleteOneButton{\n            background-color: red;\n            height: 4vh;\n        }\n    </style>\n    </br>\n    </br>\n    <p id=\"text_visible\" ><b>List of selected targets:</b></br></p>\n    <button id=\"send_button\" type=\"button\" class = \"button3\">Send Goals</button>\n\n    <p id=\"text\" hidden></p>\n\n    <script>\n\n        (function(scope){\n        scope.$watch('msg',function(){\n\n            //var msgtemp = \"{\\\"position.x\\\":\" + scope.msg.payload.position.x + \",\\\"position.y\\\":\" + scope.msg.payload.position.y +\n            // \",\\\"position.degree\\\":\" + scope.msg.payload.position.degree + \",\\\"orientation.x\\\":\" + scope.msg.payload.orientation.x +\n            // \",\\\"orientation.y\\\":\" + scope.msg.payload.orientation.y + \",\\\"orientation.z\\\":\" + scope.msg.payload.orientation.z + \n            // \",\\\"orientation.w\\\":\" + scope.msg.payload.orientation.w + \"}</br>\";\n\n            var msgtemp = \"{\\\"position\\\":{\\\"x\\\":\" + scope.msg.payload.position.x + \",\\\"y\\\":\" + scope.msg.payload.position.y +\n            \",\\\"degree\\\":\" + scope.msg.payload.position.degree + \"},\\\"orientation\\\":{\\\"x\\\":\" + scope.msg.payload.orientation.x +\n            \",\\\"y\\\":\" + scope.msg.payload.orientation.y + \",\\\"z\\\":\" + scope.msg.payload.orientation.z +\n            \",\\\"w\\\":\" + scope.msg.payload.orientation.w + \"}}endofmsg\";\n\n            var msgtemp_visible = \"</br></br><b>Position:</b><br>x: \" + scope.msg.payload.position.x + \"</br>y: \" + scope.msg.payload.position.y +\n            \"</br>Degree: \" + scope.msg.payload.position.degree + \"</br><b>Orientation:</b></br>x: \" + scope.msg.payload.orientation.x +\n            \"</br>y: \" + scope.msg.payload.orientation.y + \"</br>z: \" + scope.msg.payload.orientation.z +\n            \"</br>w: \" + scope.msg.payload.orientation.w + \"</br></br>\";\n\n            var oldmsg = document.getElementById('text').innerHTML\n            var oldmsg_visible = document.getElementById('text_visible').innerHTML\n\n            document.getElementById('adder').addEventListener('click', function() {\n                document.getElementById('text').innerHTML = oldmsg + msgtemp\n                var new_visible = oldmsg_visible + msgtemp_visible + \"<button id=\"+msgtemp+\" class=\\\"deleteOneButton\\\"><i class=\\\"fa fa-close\\\"></i> Delete</button>\";\n                document.getElementById('text_visible').innerHTML = new_visible\n\n                // O zamana kadarki bütün msgtempler adına (onları id kabul ederek) birer tane addEventListener fonksiyonu ekleyecek bir döngü yazılmalı.\n\n                var idlist = document.getElementById('text').innerHTML.split(\"endofmsg\")\n                var idlist_visible = document.getElementById('text_visible').innerHTML.split(\"<b>Position:</b>\")\n                idlist_visible = idlist_visible.map(i => \"<b>Position:</b>\" + i);\n                for(var i=0; i<idlist.length-1; i++){\n                    document.getElementById(idlist[i]+\"endofmsg\").addEventListener('click', function() {\n                        //document.getElementById('text_visible').innerHTML = new_visible.replace(idlist[1],\"\")\n                        //document.getElementById('text_visible').innerHTML = new_visible.replace(\"Position\",\"\")\n                        var index = idlist.indexOf(this.id.slice(0,-8))\n                        //idlist_visible[index+1] = idlist_visible[index+1].replace(\"</br>\",\"\")\n                        //document.getElementById('text_visible').innerHTML = idlist_visible[index+1]\n                        delete idlist_visible[index+1]\n                        document.getElementById('text_visible').innerHTML = idlist_visible.slice(1).join(\"\")\n                    });\n                }\n            });\n        })\n        })(scope)\n\n        document.getElementById('cleaner').addEventListener('click', function() {\n                document.getElementById('text').innerHTML = \"\"\n                document.getElementById('text_visible').innerHTML = \"<b>List of selected targets:</b> </br>\"\n            });\n    </script>\n\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 860,
-        "y": 1300,
+        "x": 840,
+        "y": 1180,
         "wires": [
             [
                 "673d91bb0ab05d0d"
@@ -1113,8 +1110,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1100,
-        "y": 1300,
+        "x": 1080,
+        "y": 1180,
         "wires": []
     },
     {
@@ -1154,7 +1151,7 @@
         "type": "ui_template",
         "z": "a9afdc70a2e5d4b1",
         "group": "ef6dba4cc88d5826",
-        "name": "",
+        "name": "get target list to nodered",
         "order": 6,
         "width": 0,
         "height": 0,
@@ -1164,7 +1161,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 300,
+        "x": 350,
         "y": 1200,
         "wires": [
             [
@@ -1185,7 +1182,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 500,
+        "x": 580,
         "y": 1200,
         "wires": []
     },
@@ -1211,35 +1208,20 @@
         "type": "split",
         "z": "a9afdc70a2e5d4b1",
         "name": "",
-        "splt": "<br>",
+        "splt": "endofmsg",
         "spltType": "str",
         "arraySplt": 1,
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 270,
+        "x": 290,
         "y": 1320,
         "wires": [
             [
-                "d9052a7fd847b24c"
+                "d9052a7fd847b24c",
+                "b4c095c17f78b8d8"
             ]
         ]
-    },
-    {
-        "id": "ae9db8efb4baee31",
-        "type": "debug",
-        "z": "a9afdc70a2e5d4b1",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 780,
-        "y": 1400,
-        "wires": []
     },
     {
         "id": "043515cc271c1a2d",
@@ -1252,7 +1234,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 120,
+        "x": 140,
         "y": 1320,
         "wires": [
             [
@@ -1280,7 +1262,7 @@
         "reduceInit": "",
         "reduceInitType": "num",
         "reduceFixup": "",
-        "x": 410,
+        "x": 430,
         "y": 1320,
         "wires": [
             [
@@ -1293,7 +1275,7 @@
         "type": "function",
         "z": "a9afdc70a2e5d4b1",
         "name": "function 9",
-        "func": "var arr = msg.payload.slice(1,msg.payload.length-1)\nfor (let i = 0; i < arr.length; i++) {\n    arr[i] = JSON.parse(arr[i])\n}\nmsg.payload = arr;\nreturn msg;",
+        "func": "var arr = msg.payload.slice(0,msg.payload.length-1)\nfor (let i = 0; i < arr.length; i++) {\n    arr[i] = JSON.parse(arr[i])\n}\narr.unshift({\"target_count\":arr.length})\nmsg.payload = arr;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1303,8 +1285,106 @@
         "y": 1320,
         "wires": [
             [
-                "ae9db8efb4baee31"
+                "c92d25ecd195fd67"
             ]
         ]
+    },
+    {
+        "id": "c92d25ecd195fd67",
+        "type": "function",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "multi target update in db",
+        "func": "var count = msg.payload[0].target_count\nvar message = \"\"\n\nfor (let i = 1; i < count+1; i++) {\n    message = message + \"\\\"target\" + i.toString() + \".position.x\\\": \" + (msg.payload[i].position.x).toString() + \",\\\"target\" + i.toString() + \".position.y\\\": \" + \n        (msg.payload[i].position.y).toString() + \",\\\"target\" + i.toString() + \".position.z\\\": 0.0\" + \",\\\"target\" + i.toString() + \".orientation.x\\\": \" +\n        (msg.payload[i].orientation.x).toString() + \",\\\"target\" + i.toString() + \".orientation.y\\\": \" +\n        (msg.payload[i].orientation.y).toString() + \",\\\"target\" + i.toString() + \".orientation.z\\\": \" +\n        (msg.payload[i].orientation.z).toString() + \",\\\"target\" + i.toString() + \".orientation.w\\\": \" +\n        (msg.payload[i].orientation.w).toString() + \",\\\"target\" + i.toString() + \".target_executed\\\": 0,\"\n}\nmessage = \"{\" +message + \"\\\"target_count\\\":\"+ count + \"}\"\nmessage = JSON.parse(message)\n\nmsg.payload = [{ \"data\": \"robot3\" }, \n    {\n        $set: message, \n    $currentDate: { lastModified: true } }]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 1320,
+        "wires": [
+            [
+                "831b75538f1e145f",
+                "727d7e40607b1ac5"
+            ]
+        ]
+    },
+    {
+        "id": "727d7e40607b1ac5",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "72a7f587f4b5bb2e",
+        "type": "inject",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "xfgdfg",
+        "payloadType": "str",
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "815bce8a8b9f0b7b",
+                "26f8c683968a579f"
+            ]
+        ]
+    },
+    {
+        "id": "26f8c683968a579f",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b4c095c17f78b8d8",
+        "type": "debug",
+        "z": "a9afdc70a2e5d4b1",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 1380,
+        "wires": []
     }
 ]
